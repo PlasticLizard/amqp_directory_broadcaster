@@ -1,0 +1,5 @@
+dir = File.expand_path(File.dirname(__FILE__))
+
+require File.join(dir,"../lib/amqp_directory_broadcaster")
+
+AmqpDirectoryBroadcaster.broadcast
