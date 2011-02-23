@@ -20,6 +20,8 @@ module AmqpDirectoryBroadcaster
       opt :durable, "Whether or not the exchange is durable", :default => true
       opt :routing_key, "The routing key to use when publishing messages", :type=>String, :short => '-k'
       opt :verbose, :default => false
+
+      opt :auto_delete, "Delete the message files after sending them", :default => true
     end
     Trollop::die :exchange, "must be specified" unless opts[:exchange]
     opts
@@ -55,6 +57,8 @@ module AmqpDirectoryBroadcaster
           puts "Publishing message:#{message_text}" if options[:verbose]
           exchange.publish(message_text)
         end
+        puts "Deleting #{message}" if options[:verbose]
+        File.delete(message)
       end
     ensure
       bunny.stop
