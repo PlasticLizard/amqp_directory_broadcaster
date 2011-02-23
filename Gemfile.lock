@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tritech (1.0.0)
+    amqp_directory_broadcaster (1.0.0)
       bunny
       trollop
 
@@ -16,7 +16,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amqp_directory_broadcaster!
   bunny
   rake
-  tritech!
   trollop

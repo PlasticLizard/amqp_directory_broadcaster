@@ -11,7 +11,7 @@ end
 
 desc 'Builds and installs the gem'
 task :install => :build do
-  sh "gem install tritech-#{AmqpDirectoryBroadcaster::VERSION}"
+  sh "gem install amqp_directory_broadcaster-#{AmqpDirectoryBroadcaster::VERSION}"
 end
 
 desc 'Tags version, pushes to remote, and pushes gem'
@@ -19,7 +19,7 @@ task :release => :build do
   sh "git tag v#{AmqpDirectoryBroadcaster::VERSION}"
   sh "git push origin master"
   sh "git push origin v#{AmqpDirectoryBroadcaster::VERSION}"
-  sh "gem push tritech-#{AmqpDirectoryBroadcaster::VERSION}.gem"
+  sh "gem push amqp_directory_broadcaster-#{AmqpDirectoryBroadcaster::VERSION}.gem"
 end
 
 
