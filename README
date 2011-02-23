@@ -3,6 +3,6 @@ USAGE:
 gem install amqp_directory_broadcaster
 
 For help:
-broadcast-directory --help
+broadcast_directory --help
 
 broadcast_directory --source "~/source_dir"  --filter "*.message" --broker "amqp://ganga" --exchange "my.exchange" --routing-key "my.event.name"
