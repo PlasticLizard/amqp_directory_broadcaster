@@ -1,8 +1,15 @@
+PATH
+  remote: .
+  specs:
+    tritech (1.0.0)
+      bunny
+      trollop
+
 GEM
   remote: http://rubygems.org/
   specs:
     bunny (0.6.0)
-    json (1.5.1)
+    rake (0.8.7)
     trollop (1.16.2)
 
 PLATFORMS
@@ -10,5 +17,6 @@ PLATFORMS
 
 DEPENDENCIES
   bunny
-  json
+  rake
+  tritech!
   trollop
