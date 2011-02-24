@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    amqp_directory_broadcaster (1.0.0)
+    amqp_directory_broadcaster (1.0.1)
       bunny
       trollop
 

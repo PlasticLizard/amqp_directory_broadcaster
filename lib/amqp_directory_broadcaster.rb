@@ -1,6 +1,4 @@
 require "rubygems"
-require "bundler/setup"
-
 require 'trollop'
 require 'bunny'
 
@@ -19,7 +17,7 @@ module AmqpDirectoryBroadcaster
       opt :type, "The type of the exchange you want to publish to", :type => String, :default => "topic"
       opt :durable, "Whether or not the exchange is durable", :default => true
       opt :routing_key, "The routing key to use when publishing messages", :type=>String, :short => '-k'
-      opt :verbose, :default => false
+      opt :verbose, "Output volumes of exciting, play by play information. Make sure you get your soda and chips before turning on this baby.", :default => false
 
       opt :auto_delete, "Delete the message files after sending them", :default => true
     end
