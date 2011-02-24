@@ -12,14 +12,14 @@ module AmqpDirectoryBroadcaster
       @port = 5672
 
       if (constr =~ /amqp:\/\//)
-        uri = URI.parse(constr)
-        host =  uri.host
-        port = uri.port || 5672
-        username = uri.user || "guest"
-        password = uri.password || "guest"
-        vhost = uri.path.strip.length < 1 ? "/" : uri.path
+        @uri = URI.parse(constr)
+        @host =  uri.host
+        @port = uri.port || 5672
+        @username = uri.user || "guest"
+        @password = uri.password || "guest"
+        @vhost = uri.path.strip.length < 1 ? "/" : uri.path
       else
-        host = constr
+        @host = constr
       end
     end
 

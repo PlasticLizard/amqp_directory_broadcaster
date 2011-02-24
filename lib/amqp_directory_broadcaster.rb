@@ -37,6 +37,7 @@ module AmqpDirectoryBroadcaster
     puts "Sending messages to #{exchange_name} @ #{broker_uri}"
 
     bunny = breed(broker.to_h)
+    puts "Broker Settings:#{broker.to_h.inspect}" if options[:verbose]
 
     begin
       exchange_options = {
