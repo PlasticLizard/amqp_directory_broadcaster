@@ -11,13 +11,14 @@ module AmqpDirectoryBroadcaster
   def self.parse_options
     opts = Trollop::options do
       opt :source, "The directory you want to publish JSON messages from", :type => String, :default=>"."
-      opt :filter, "The file filter to use to select which files to send", :default => "*.json"
+      opt :filter, "The file filter to use to select which files to send", :type => String
       opt :broker, "The uri of the AMQP broker you want to publish to", :type => String, :default=>"localhost"
       opt :exchange, "The name of the exchange you want to publish to", :type => String
       opt :type, "The type of the exchange you want to publish to", :type => String, :default => "topic"
       opt :durable, "Whether or not the exchange is durable", :default => true
       opt :routing_key, "The routing key to use when publishing messages", :type=>String, :short => '-k'
       opt :verbose, "Output volumes of exciting, play by play information. Make sure you get your soda and chips before turning on this baby.", :default => false
+      opt :message_extension, "The extension that identifies message files in the source directory", :type => String, :default => "json", :short => '-x'
 
       opt :auto_delete, "Delete the message files after sending them", :default => true
     end
@@ -28,7 +29,8 @@ module AmqpDirectoryBroadcaster
   def self.broadcast(options = nil)
     options ||= parse_options
     dir = File.expand_path(options[:source])
-    filter = File.join(dir,options[:filter])
+    filter = options[:filter] || "*.#{options[:message_extension]}"
+    filter = File.join(dir,".") + "/#{filter}" #windows hack
     exchange_name = options[:exchange]
     broker_uri = options[:broker]
     broker = AmqpDirectoryBroadcaster::Rabbit.new(broker_uri)
